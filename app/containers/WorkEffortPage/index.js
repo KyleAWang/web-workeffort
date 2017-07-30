@@ -4,7 +4,6 @@ import {createStructuredSelector} from 'reselect';
 
 import {Card, CardHeader, CardText} from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
-import SelectField from 'material-ui/SelectField';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import './styles/index.scss';
@@ -64,7 +63,7 @@ export class WorkEffortPage extends React.Component {
 
         </div>
       </form>
-    )
+    );
 
     return (
       <div>

@@ -82,7 +82,7 @@ function StatusItems(props) {
 }
 
 StatusItems.propTypes = {
-  currentStatusId: React.PropTypes.string,
+  currentStatusId: React.PropTypes.array,
   onChangeStatus: React.PropTypes.func
 };
 

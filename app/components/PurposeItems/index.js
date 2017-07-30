@@ -4,24 +4,24 @@ import SelectField from 'material-ui/SelectField';
 
 function PurposeItems(props) {
   const purposeItems = [
-    <MenuItem value="" primaryText=""/>,
-    <MenuItem value="ROU_ASSEMBLING" primaryText="Assembling"/>,
-    <MenuItem value="SCRUM_DEFAULT_TASK" primaryText="Default Task"/>,
-    <MenuItem value="WEPT_DEPLOYMENT" primaryText="Deployment"/>,
-    <MenuItem value="WEPT_DEVELOPMENT" primaryText="Development"/>,
-    <MenuItem value="WEPT_TASK_EMAIL" primaryText="Email"/>,
-    <MenuItem value="WEPT_MAINTENANCE" primaryText="Maintenance"/>,
-    <MenuItem value="ROU_MANUFACTURING" primaryText="Manufacturing"/>,
-    <MenuItem value="WEPT_MEETING" primaryText="Meeting"/>,
-    <MenuItem value="WEPT_PHASE" primaryText="Phase"/>,
-    <MenuItem value="WEPT_TASK_PHONE_CALL" primaryText="Phone Call"/>,
-    <MenuItem value="WEPT_PRODUCTION_RUN" primaryText="Production Run"/>,
-    <MenuItem value="WEPT_PROJECT" primaryText="Project"/>,
-    <MenuItem value="WEPT_RESEARCH" primaryText="Research"/>,
-    <MenuItem value="ROU_SUBCONTRACTING" primaryText="Sub-contracting"/>,
-    <MenuItem value="WEPT_SUPPORT" primaryText="Support"/>,
-    <MenuItem value="SYSTEM_DEFAULT_TASK" primaryText="System Default Task"/>,
-    <MenuItem value="WEPT_WAREHOUSING" primaryText="Warehousing"/>
+    <MenuItem value="" key={0} primaryText=""/>,
+    <MenuItem value="ROU_ASSEMBLING" key={1} primaryText="Assembling"/>,
+    <MenuItem value="SCRUM_DEFAULT_TASK" key={2} primaryText="Default Task"/>,
+    <MenuItem value="WEPT_DEPLOYMENT" key={3} primaryText="Deployment"/>,
+    <MenuItem value="WEPT_DEVELOPMENT" key={4} primaryText="Development"/>,
+    <MenuItem value="WEPT_TASK_EMAIL" key={5} primaryText="Email"/>,
+    <MenuItem value="WEPT_MAINTENANCE" key={6} primaryText="Maintenance"/>,
+    <MenuItem value="ROU_MANUFACTURING" key={7} primaryText="Manufacturing"/>,
+    <MenuItem value="WEPT_MEETING" key={8} primaryText="Meeting"/>,
+    <MenuItem value="WEPT_PHASE" key={9} primaryText="Phase"/>,
+    <MenuItem value="WEPT_TASK_PHONE_CALL" key={10} primaryText="Phone Call"/>,
+    <MenuItem value="WEPT_PRODUCTION_RUN" key={11} primaryText="Production Run"/>,
+    <MenuItem value="WEPT_PROJECT" key={12} primaryText="Project"/>,
+    <MenuItem value="WEPT_RESEARCH" key={13} primaryText="Research"/>,
+    <MenuItem value="ROU_SUBCONTRACTING" key={14} primaryText="Sub-contracting"/>,
+    <MenuItem value="WEPT_SUPPORT" key={15} primaryText="Support"/>,
+    <MenuItem value="SYSTEM_DEFAULT_TASK" key={16} primaryText="System Default Task"/>,
+    <MenuItem value="WEPT_WAREHOUSING" key={17} primaryText="Warehousing"/>
   ];
 
   return (
