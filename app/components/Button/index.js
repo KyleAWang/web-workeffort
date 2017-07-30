@@ -9,7 +9,7 @@ function Button(props) {
     btnMarginLeft: props.isMarginLeft,
   });
 
-  let button = (
+  const button = (
     <RaisedButton label={Children.toArray(props.children)} className={btnClass}/>
   )
   return button;
