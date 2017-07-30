@@ -1,0 +1,59 @@
+@import "./constants";
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.col-1 {width: $COL-WIDTH-1}
+.col-2 {width: $COL-WIDTH-2}
+.col-3 {width: $COL-WIDTH-3}
+.col-4 {width: $COL-WIDTH-4}
+.col-5 {width: $COL-WIDTH-5}
+.col-6 {width: $COL-WIDTH-6}
+.col-7 {width: $COL-WIDTH-7}
+.col-8 {width: $COL-WIDTH-8}
+.col-9 {width: $COL-WIDTH-9}
+.col-10 {width: $COL-WIDTH-10}
+.col-11 {width: $COL-WIDTH-11}
+.col-12 {width: $COL-WIDTH-12}
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.inline-box-block {
+  display: inline-block;
+}
+
+@media only screen and (min-width: $SMARTPHONE-BREAKPOINT-PLUS) and (max-width: $TABLET-BREAKPOINT) {
+  /* For tablets: */
+  .col-m-1 {width: $COL-WIDTH-1}
+  .col-m-2 {width: $COL-WIDTH-2}
+  .col-m-3 {width: $COL-WIDTH-3}
+  .col-m-4 {width: $COL-WIDTH-4}
+  .col-m-5 {width: $COL-WIDTH-5}
+  .col-m-6 {width: $COL-WIDTH-6}
+  .col-m-7 {width: $COL-WIDTH-7}
+  .col-m-8 {width: $COL-WIDTH-8}
+  .col-m-9 {width: $COL-WIDTH-9}
+  .col-m-10 {width: $COL-WIDTH-10}
+  .col-m-11 {width: $COL-WIDTH-11}
+  .col-m-12 {width: $COL-WIDTH-12}
+}
+
+
+@media only screen and (max-width: $SMARTPHONE-BREAKPOINT) {
+  /* For mobile phones: */
+  [class*="col-"] {
+    width: $COL-WIDTH-12;
+  }
+}

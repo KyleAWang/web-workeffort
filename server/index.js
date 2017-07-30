@@ -68,9 +68,7 @@ if (cluster.isMaster){
 
     app.use(flash());
 
-    console.log('work effort routes...');
     workEffortRoutes(app);
-    console.log('work effort routes end...');
 
     app.route('/:url(api)/*').get(core.renderNotFound);
 
