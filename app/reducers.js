@@ -8,6 +8,7 @@ import { combineReducers } from 'redux-immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
 
 import globalReducer from 'containers/App/reducer';
+import workEffortReducer from 'containers/WorkEffortPage/reducer';
 
 /*
  * routeReducer
@@ -43,6 +44,7 @@ function routeReducer(state = routeInitialState, action) {
 export default function createReducer(asyncReducers) {
   return combineReducers({
     route: routeReducer,
+    workEffort: workEffortReducer,
     global: globalReducer,
     ...asyncReducers,
   });
