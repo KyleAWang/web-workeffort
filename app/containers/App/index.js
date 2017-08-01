@@ -8,6 +8,7 @@
 
 import React from 'react';
 import Helmet from 'react-helmet';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import withProgressBar from 'components/ProgressBar';
 import Header from 'components/Header';
@@ -40,7 +41,7 @@ export function App(props) {
 }
 
 App.propTypes = {
-  children: React.PropTypes.node,
+  children: PropTypes.node,
 };
 
 export default withProgressBar(App);

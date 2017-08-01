@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
+import PropTypes from 'prop-types';
 
 import {Card, CardHeader, CardText} from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
@@ -124,12 +125,12 @@ export class WorkEffortPage extends React.Component {
 }
 
 WorkEffortPage.PropTypes = {
-  loading: React.PropTypes.bool,
-  error: React.PropTypes.oneOfType([
-    React.PropTypes.bool,
-    React.PropTypes.object
+  loading: PropTypes.bool,
+  error: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.object
   ]),
-  searchOptions: React.PropTypes.object
+  searchOptions: PropTypes.object
 };
 
 const mapStateToProps = createStructuredSelector({
