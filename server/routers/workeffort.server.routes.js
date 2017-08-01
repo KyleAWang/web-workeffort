@@ -12,7 +12,7 @@ export default (app) => {
   let v0 = express.Router();
 
   v0.route('/api/workefforts/')
-    .post(createWorkEffort)
+    .post(listWorkEffort)
     .get(listWorkEffort);
 
   v0.route('/api/workefforts/:_id')

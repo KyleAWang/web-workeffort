@@ -7,7 +7,25 @@ const makeSelectSearchOptions = () => createSelector(
   (workEffortState) => workEffortState.get('searchOptions')
 );
 
+const makeSelectSearchWorkEfforts = () => createSelector(
+  selectWorkEffort,
+  (workEffortState) => workEffortState.get('workEfforts')
+);
+
+const makeSelectLoading = () => createSelector(
+  selectWorkEffort,
+  (workEffortState) => workEffortState.get('loading')
+);
+
+const makeSelectError = () => createSelector(
+  selectWorkEffort,
+  (workEffortState) => workEffortState.get('error')
+);
+
 export {
   selectWorkEffort,
-  makeSelectSearchOptions
+  makeSelectSearchOptions,
+  makeSelectSearchWorkEfforts,
+  makeSelectError,
+  makeSelectLoading
 };

@@ -39,13 +39,16 @@ export default function createRoutes(store) {
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           import('containers/WorkEffortPage/reducer'),
+          import('containers/WorkEffortPage/sagas'),
           import('containers/WorkEffortPage')
         ]);
 
         const renderRoute = loadModule(cb);
 
-        importModules.then(([reducer, component]) => {
-          injectReducer('workEffort', reducer.default),
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('workEffort', reducer.default);
+          injectSagas(sagas.default);
+
           renderRoute(component);
         });
 
