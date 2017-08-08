@@ -6,6 +6,7 @@ import {
   listWorkEffort,
   updateWorkEffort
 } from '../controllers/workefforts.server.controller';
+import { userLogin } from '../controllers/user.server.controller';
 
 export default (app) => {
 
@@ -19,6 +20,10 @@ export default (app) => {
     .delete(deleteWorkEffort)
     .put(updateWorkEffort)
     .get(getWorkEffort);
+
+  v0.route('/api/user-login/')
+    // .post(userLogin)
+    .get(userLogin);
 
   app.use('/v0', v0);
   app.use('/', v0);
