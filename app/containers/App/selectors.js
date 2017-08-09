@@ -12,6 +12,11 @@ const makeSelectError = () => createSelector(
   (globalState) => globalState.get('error')
 );
 
+const makeSelectCurrentUser = () => createSelector(
+  selectGlobal,
+  (globalState) => globalState.get('currentUser')
+);
+
 const makeSelectLocationState = () => {
   let prevRoutingState;
   let prevRoutingStateJS;
@@ -32,5 +37,6 @@ export {
   selectGlobal,
   makeSelectLocationState,
   makeSelectError,
-  makeSelectLoading
+  makeSelectLoading,
+  makeSelectCurrentUser
 }

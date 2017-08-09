@@ -1,4 +1,9 @@
-import { CHANGE_SEARCH_OPTIONS, SEARCH_WORKEFFORTS, SEARCH_WORKEFFORTS_SUCCESS, SEARCH_WORKEFFORTS_ERROR } from './constants';
+import {
+  CHANGE_SEARCH_OPTIONS,
+  SEARCH_WORKEFFORTS,
+  SEARCH_WORKEFFORTS_SUCCESS,
+  SEARCH_WORKEFFORTS_ERROR
+} from './constants';
 
 export function changeSearchOptions(searchOptions) {
   return {

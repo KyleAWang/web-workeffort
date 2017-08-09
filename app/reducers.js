@@ -9,6 +9,7 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 
 import globalReducer from 'containers/App/reducer';
 import workEffortReducer from 'containers/WorkEffortPage/reducer';
+import userReducer from 'containers/UserLogin/reducer';
 
 /*
  * routeReducer
@@ -46,6 +47,7 @@ export default function createReducer(asyncReducers) {
     route: routeReducer,
     workEffort: workEffortReducer,
     global: globalReducer,
+    user: userReducer,
     ...asyncReducers,
   });
 }

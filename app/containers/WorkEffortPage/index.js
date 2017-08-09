@@ -1,9 +1,9 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {createStructuredSelector} from 'reselect';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
 
-import {Card, CardHeader, CardText} from 'material-ui/Card';
+import { Card, CardHeader, CardText } from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
@@ -14,20 +14,20 @@ import StatusItems from 'components/StatusItems';
 import SearchResultsTable from 'components/SearchResultsTable';
 
 import './styles/index.scss';
-import {makeSelectSearchOptions, makeSelectSearchWorkEfforts, makeSelectError, makeSelectLoading} from './selectors';
-import {changeSearchOptions, searchWorkEfforts} from './actions';
+import { makeSelectSearchOptions, makeSelectSearchWorkEfforts, makeSelectError, makeSelectLoading } from './selectors';
+import { changeSearchOptions, searchWorkEfforts } from './actions';
 import LoadingIndicator from 'components/LoadingIndicator';
 
 export class WorkEffortPage extends React.Component {
   constructor(props) {
     super(props)
   };
-
-  state = {
-    workEffortTypeId: '',
-    workEffortPurposeTypeId: '',
-    currentStatusId: []
-  };
+  //
+  // state = {
+  //   workEffortTypeId: '',
+  //   workEffortPurposeTypeId: '',
+  //   currentStatusId: []
+  // };
 
   onChangeType = (event, index, value) => {
     // this.setState({workEffortTypeId: value});
@@ -51,7 +51,7 @@ export class WorkEffortPage extends React.Component {
     const newSearchOptions = {
       ...this.props.searchOptions,
       currentStatusId: value
-    }
+    };
     this.props.onChangeSearchOptions(newSearchOptions);
   };
 
@@ -72,7 +72,7 @@ export class WorkEffortPage extends React.Component {
   };
 
   render() {
-    const {searchOptions, loading, onSubmitForm, workEfforts} = this.props;
+    const { searchOptions, loading, onSubmitForm, workEfforts } = this.props;
     const title = <div className="page-title"><span>Find Work Effort</span></div>;
 
     const searchOptionsDiv = (
@@ -119,7 +119,6 @@ export class WorkEffortPage extends React.Component {
         </div>
       ));
     }
-    console.log(workEffortsContent);
 
     return (
       <div>
@@ -175,7 +174,7 @@ export function mapDispatchToProps(dispatch) {
       if (evt !== undefined && evt.preventDefault) {
         evt.preventDefault();
       }
-      dispatch(searchWorkEfforts())
+      dispatch(searchWorkEfforts());
     }
   }
 }

@@ -6,6 +6,7 @@ export default function() {
     <div>
       <ul>
         <li><Link to="/workeffort">Work Effort</Link></li>
+        <li><Link to="/login">Login</Link></li>
       </ul>
     </div>
   );

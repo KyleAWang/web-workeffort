@@ -14,7 +14,7 @@ const loadModule = (cb) => (componentModule) => {
 
 export default function createRoutes(store) {
   // create reusable async injectors using getAsyncInjectors factory
-  const { injectReducer, injectSagas } = getAsyncInjectors(store);
+  const {injectReducer, injectSagas} = getAsyncInjectors(store);
 
   return [
     {
@@ -22,8 +22,8 @@ export default function createRoutes(store) {
       name: 'home',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-        import('components/TempHomePage')
-      ]);
+          import('components/TempHomePage')
+        ]);
 
         const renderRoute = loadModule(cb);
 
@@ -33,7 +33,7 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
-    },  {
+    }, {
       path: '/workeffort',
       name: 'workEffort',
       getComponent(nextState, cb) {
@@ -55,7 +55,28 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       }
 
-      }, {
+    },{
+      path: '/login',
+      name: 'login',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/UserLogin/reducer'),
+          import('containers/UserLogin/sagas'),
+          import('containers/UserLogin')
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('user', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      }
+
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

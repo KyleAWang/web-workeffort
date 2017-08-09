@@ -15,10 +15,10 @@ properties.parse(path.resolve('server/config/properties/dev.properties'), {path:
 });
 
 export function userLogin(req, res) {
-  console.log(req.query.username);
+  console.log(req.body.username);
   axios.post(service_protocol + '://' + service_host + ':' + service_port + '/user-login', {
-    username: req.query.username,
-    password: req.query.password
+    username: req.body.username,
+    password: req.body.password
   })
     .then((response) => {
       console.log(response);

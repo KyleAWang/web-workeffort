@@ -21,9 +21,8 @@ export default (app) => {
     .put(updateWorkEffort)
     .get(getWorkEffort);
 
-  v0.route('/api/user-login/')
-    // .post(userLogin)
-    .get(userLogin);
+  v0.route('/api/signin/')
+    .post(userLogin);
 
   app.use('/v0', v0);
   app.use('/', v0);
