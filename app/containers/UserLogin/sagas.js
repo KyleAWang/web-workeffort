@@ -31,7 +31,6 @@ export function* userLogin() {
 
   try {
     const response = yield call(request, requestURL, options);
-    console.log('suc', response);
     yield put(userLoginSuccess(response));
   } catch (err) {
     console.log(err);

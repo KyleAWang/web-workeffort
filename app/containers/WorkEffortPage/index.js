@@ -22,12 +22,6 @@ export class WorkEffortPage extends React.Component {
   constructor(props) {
     super(props)
   };
-  //
-  // state = {
-  //   workEffortTypeId: '',
-  //   workEffortPurposeTypeId: '',
-  //   currentStatusId: []
-  // };
 
   onChangeType = (event, index, value) => {
     // this.setState({workEffortTypeId: value});

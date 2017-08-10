@@ -27,11 +27,17 @@ const makeSelectPassord = () => createSelector(
   (userState) => userState.get('password')
 );
 
+const makeSelectFormErrors = () => createSelector(
+  selectUser,
+  (userState) => userState.get('formErrors')
+);
+
 export {
   selectUser,
   makeSelectError,
   makeSelectLoading,
   makeSelectUser,
   makeSelectUserName,
-  makeSelectPassord
+  makeSelectPassord,
+  makeSelectFormErrors
 }

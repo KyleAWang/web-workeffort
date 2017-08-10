@@ -3,7 +3,8 @@ import {
   USER_LOGIN_SUCCESS,
   USER_LOGIN_ERROR,
   USER_LOGIN_USERNAME_CHANGE,
-  USER_LOGIN_PASSWORD_CHANGE
+  USER_LOGIN_PASSWORD_CHANGE,
+  USER_LOGIN_FORM_ERRORS
 } from './constants';
 
 
@@ -39,4 +40,11 @@ export function changePassword(password) {
      type: USER_LOGIN_PASSWORD_CHANGE,
      password
    }
+}
+
+export function onFormErrors(formErrors) {
+  return {
+    type: USER_LOGIN_FORM_ERRORS,
+    formErrors
+  }
 }
