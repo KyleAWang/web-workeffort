@@ -13,8 +13,7 @@ export default (app) => {
   let v0 = express.Router();
 
   v0.route('/api/workefforts/')
-    .post(listWorkEffort)
-    .get(listWorkEffort);
+    .post(listWorkEffort);
 
   v0.route('/api/workefforts/:_id')
     .delete(deleteWorkEffort)

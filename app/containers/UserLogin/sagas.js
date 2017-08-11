@@ -31,9 +31,13 @@ export function* userLogin() {
 
   try {
     const response = yield call(request, requestURL, options);
+    if (response.jwtToken) {
+      window.sessionStorage.setItem('jwtToken', response.jwtToken);
+
+      console.log(window.sessionStorage.getItem('jwtToken'));
+    }
     yield put(userLoginSuccess(response));
   } catch (err) {
-    console.log(err);
     yield put(userLoginError(err));
   }
 }

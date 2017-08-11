@@ -52,8 +52,8 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
       onEnter: (nextState, replace) => {
-        const user = store.getState().get('user').get('user');
-        if (!user || !user.userLoginId) {
+        console.log('router onEnter', window.sessionStorage.getItem('jwtToken'));
+        if (!window.sessionStorage.getItem('jwtToken')) {
           replace({
             pathname: '/login',
             state: { nextState: nextState.location.pathname }

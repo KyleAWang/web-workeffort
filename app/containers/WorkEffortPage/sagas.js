@@ -10,22 +10,32 @@ import { SEARCH_WORKEFFORTS } from './constants';
 export function* searchWorkefforts() {
   const requestURL = '/api/workefforts/';
   const searchOptions = yield select(makeSelectSearchOptions());
-  console.log(JSON.stringify(searchOptions));
+
+  let jwtToken;
+  console.log(window.sessionStorage.getItem('jwtToken'));
+
+  if (window.sessionStorage.getItem('jwtToken')) {
+    jwtToken = window.sessionStorage.getItem('jwtToken');
+  } else {
+    browserHistory.push('/login');
+  }
 
   const options = {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'x-access-token': jwtToken
     },
     body: JSON.stringify(searchOptions)
   };
+
+  console.log(options);
 
   try {
     const response = yield call(request, requestURL, options);
     yield put(searchWorkEffortsSuccess(response));
   } catch (err) {
-    console.log(err);
     yield put(searchWorkEffortsError(err));
   }
 }
