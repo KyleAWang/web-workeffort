@@ -2,21 +2,6 @@ import { createSelector } from 'reselect';
 
 const selectGlobal = (state) => state.get('global');
 
-const makeSelectLoading = () => createSelector(
-  selectGlobal,
-  (globalState) => globalState.get('loading')
-);
-
-const makeSelectError = () => createSelector(
-  selectGlobal,
-  (globalState) => globalState.get('error')
-);
-
-const makeSelectCurrentUser = () => createSelector(
-  selectGlobal,
-  (globalState) => globalState.get('currentUser')
-);
-
 const makeSelectLocationState = () => {
   let prevRoutingState;
   let prevRoutingStateJS;
@@ -33,10 +18,13 @@ const makeSelectLocationState = () => {
   };
 };
 
+const makeSelectDrawerToggle = () => createSelector(
+  selectGlobal,
+  (globalState) => globalState.get('drawerToggle')
+);
+
 export {
   selectGlobal,
   makeSelectLocationState,
-  makeSelectError,
-  makeSelectLoading,
-  makeSelectCurrentUser
+  makeSelectDrawerToggle
 }

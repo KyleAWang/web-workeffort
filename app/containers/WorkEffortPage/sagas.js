@@ -1,8 +1,9 @@
 import { put, takeLatest, cancel, take, select, call } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
-import request from 'utils/request';
 import { browserHistory } from 'react-router';
 
+import request from 'utils/request';
+import { logout } from 'utils/auth';
 import { makeSelectSearchOptions } from './selectors';
 import { searchWorkEffortsSuccess, searchWorkEffortsError } from './actions';
 import { SEARCH_WORKEFFORTS } from './constants';
@@ -34,9 +35,14 @@ export function* searchWorkefforts() {
 
   try {
     const response = yield call(request, requestURL, options);
+
     yield put(searchWorkEffortsSuccess(response));
   } catch (err) {
-    yield put(searchWorkEffortsError(err));
+    if (err.response.status === 403) {
+      logout();
+    } else {
+      yield put(searchWorkEffortsError(err));
+    }
   }
 }
 

@@ -27,7 +27,31 @@ export function listWorkEffort(req, res) {
         message: 'User is not authorized'
       });
     } else {
-      axios.get(service_protocol + '://' + service_host + ':' + service_port + '/getworkefforts')
+      const parmas = {};
+      if (req.body.workEffortId) {
+        parmas.workEffortId = req.body.workEffortId;
+      }
+      if (req.body.workEffortParentId) {
+        parmas.workEffortParentId = req.body.workEffortParentId;
+      }
+      if (req.body.workEffortTypeId) {
+        parmas.body.workEffortTypeId = req.body.workEffortTypeId;
+      }
+      if (req.body.workEffortPurposeTypeId) {
+        parmas.body.workEffortPurposeTypeId = req.body.workEffortPurposeTypeId;
+      }
+      if (req.body.currentStatusId) {
+        parmas.body.currentStatusId = req.body.currentStatusId;
+      }
+      axios({
+        url: service_protocol + '://' + service_host + ':' + service_port + '/getworkefforts',
+        method: 'post',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        data: parmas
+      })
         .then((response) => {
           res.send(response.data);
         })

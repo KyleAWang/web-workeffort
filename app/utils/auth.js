@@ -1,16 +1,20 @@
 import React from 'react';
+import { browserHistory } from 'react-router';
 
 
-export class Auth{
-  login(user) {
-    localStorage.user = user;
+export function login(jwtToken) {
+  sessionStorage.jwtToken = jwtToken;
+}
+
+export function loggedIn() {
+  if (!sessionStorage.jwtToken) {
+    browserHistory.push('/login');
+  } else {
+    return !!sessionStorage.jwtToken;
   }
+}
 
-  loggedIn() {
-    return !!localStorage.user && localStorage.user.hasLoggedOut === 'N';
-  }
-
-  logout() {
-    delete localStorage.user;
-  }
+export function logout() {
+  delete sessionStorage.jwtToken;
+  browserHistory.push('/login');
 }

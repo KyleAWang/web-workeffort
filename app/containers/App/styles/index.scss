@@ -90,6 +90,14 @@
   margin-top: 1em;
 }
 
+.main-context {
+  margin: 4em 1.5em 1em 1.5em;
+  //padding-left: 256px;
+}
+
+.drwaer_div {
+  top: 64px !important;
+}
 
 @media only screen and (min-width: $SMARTPHONE-BREAKPOINT-PLUS) and (max-width: $TABLET-BREAKPOINT) {
   /* For tablets: */

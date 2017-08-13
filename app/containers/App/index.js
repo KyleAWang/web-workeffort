@@ -9,39 +9,71 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import withProgressBar from 'components/ProgressBar';
-import Header from 'components/Header';
+import AppBar from 'material-ui/AppBar';
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
+import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import './styles/index.scss';
+import { toggleDrawer } from './actions';
+import { makeSelectDrawerToggle } from './selectors';
 
 
-const AppWrapper = styled.div`
-  max-width: calc(768px + 16px * 2);
-  margin: 0 auto;
-  display: flex;
-  min-height: 100%;
-  padding: 0 16px;
-  flex-direction: column;
-`;
+class App extends React.Component {
+  render() {
+    const { drawerToggle, onChangeDrawerToggle } = this.props;
+    const styles = { example: { position: "fixed", top: 0, }, };
 
-export function App(props) {
-  return (
-    <AppWrapper>
-      <Helmet
-        defaultTitle="Work Effort Management"
-        meta={[
-          { name: 'description', content: 'Work Effort Management application' },
-        ]}
-      />
-      <Header />
-      {React.Children.toArray(props.children)}
-    </AppWrapper>
-  );
+    return (
+      <div>
+        <Helmet
+          defaultTitle="Work Effort Management"
+          meta={[
+            {name: 'description', content: 'Work Effort Management application'},
+          ]}
+        />
+        <div>
+          <AppBar
+            title="Work Effort"
+            iconClassNameRight="muidocs-icon-navigation-expand-more"
+            style={styles.example}
+            onLeftIconButtonTouchTap={() => onChangeDrawerToggle(!drawerToggle)}
+          >
+          </AppBar>
+          <div>
+            <Drawer open={drawerToggle} containerClassName="drwaer_div">
+              <MenuItem
+                containerElement={<Link to="/workeffort"/>} onTouchTap={() => onChangeDrawerToggle(false)}>Find Work Efforts</MenuItem>
+              <MenuItem>Menu Item 2</MenuItem>
+            </Drawer>
+          </div>
+        </div>
+        <div className="main-context">
+          {React.Children.toArray(this.props.children)}
+        </div>
+      </div>
+    );
+
+  }
 }
 
 App.propTypes = {
   children: PropTypes.node,
 };
 
-export default withProgressBar(App);
+const mapStateToProps = createStructuredSelector({
+  drawerToggle: makeSelectDrawerToggle()
+});
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    onChangeDrawerToggle: (val) => {
+      console.log(val);
+      dispatch(toggleDrawer(val));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,13 +1,16 @@
 import { fromJS } from 'immutable';
 
+import { DRAWER_TOGGLE } from './constants';
+
 const initialState = fromJS({
-  loading: false,
-  error: false,
-  currentUser: false,
+  drawerToggle: false
 });
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
+    case DRAWER_TOGGLE:
+      return state
+        .set('drawerToggle', action.drawerToggle);
     default:
       return state;
   }

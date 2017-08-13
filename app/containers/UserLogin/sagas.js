@@ -33,10 +33,9 @@ export function* userLogin() {
     const response = yield call(request, requestURL, options);
     if (response.jwtToken) {
       window.sessionStorage.setItem('jwtToken', response.jwtToken);
-
-      console.log(window.sessionStorage.getItem('jwtToken'));
     }
     yield put(userLoginSuccess(response));
+    browserHistory.push('/');
   } catch (err) {
     yield put(userLoginError(err));
   }
