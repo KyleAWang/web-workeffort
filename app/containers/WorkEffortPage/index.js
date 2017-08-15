@@ -1,11 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import {connect} from 'react-redux';
+import {createStructuredSelector} from 'reselect';
 import PropTypes from 'prop-types';
 
-import { Card, CardHeader, CardText } from 'material-ui/Card';
+import {Card, CardHeader, CardText} from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import Helmet from 'react-helmet';
 
 import Button from 'components/Button';
 import TypeItems from  'components/TypeItems';
@@ -14,8 +15,8 @@ import StatusItems from 'components/StatusItems';
 import SearchResultsTable from 'components/SearchResultsTable';
 
 import './styles/index.scss';
-import { makeSelectSearchOptions, makeSelectSearchWorkEfforts, makeSelectError, makeSelectLoading } from './selectors';
-import { changeSearchOptions, searchWorkEfforts } from './actions';
+import {makeSelectSearchOptions, makeSelectSearchWorkEfforts, makeSelectError, makeSelectLoading} from './selectors';
+import {changeSearchOptions, searchWorkEfforts} from './actions';
 import LoadingIndicator from 'components/LoadingIndicator';
 
 export class WorkEffortPage extends React.Component {
@@ -66,28 +67,28 @@ export class WorkEffortPage extends React.Component {
   };
 
   render() {
-    const { searchOptions, loading, onSubmitForm, workEfforts } = this.props;
+    const {searchOptions, loading, onSubmitForm, workEfforts} = this.props;
     const title = <div className="page-title"><span>Find Work Effort</span></div>;
 
     const searchOptionsDiv = (
       <form onSubmit={onSubmitForm}>
         <div className="inline-box-block">
-          <div className="col-6 col-md-8">
+          <div className="col-4 col-md-6">
             <TextField hintText='WorkEffort Id' fullWidth={true} floatingLabelText='WorkEffort Id'
                        value={searchOptions.workEffortId || ''} onChange={this.onChangeWorkEffortId}/>
           </div>
-          <div className="col-6 col-md-8">
+          <div className="col-4 col-md-6">
             <TextField hintText='WorkEffort Parent Id' fullWidth={true} floatingLabelText='WorkEffort Parent Id'
                        value={searchOptions.workEffortParentId || ''} onChange={this.onChangeWorkParentEffortId}/>
           </div>
-          <div className="col-6 col-md-8">
+          <div className="col-4 col-md-6">
             <PurposeItems onChangePurpose={this.onChangePurpose}
                           workEffortPurposeTypeId={searchOptions.workEffortPurposeTypeId || ''}/>
           </div>
-          <div className="col-6 col-md-8">
+          <div className="col-4 col-md-6">
             <TypeItems onChangeType={this.onChangeType} workEffortTypeId={searchOptions.workEffortTypeId || ''}/>
           </div>
-          <div className="col-11">
+          <div className="col-4 col-md-12">
             <StatusItems currentStatusId={searchOptions.currentStatusId || []} onChangeStatus={this.onChangeStatus}/>
           </div>
           <div className="clear"/>
@@ -116,6 +117,12 @@ export class WorkEffortPage extends React.Component {
 
     return (
       <div>
+        <Helmet
+          defaultTitle="Find Work Effort"
+          meta={[
+            {name: 'description', content: 'Work Effort Management application'},
+          ]}
+        />
         {title}
         <div className="button-bar">
           <Button children='Create Work Effort'/>
