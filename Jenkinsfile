@@ -9,8 +9,7 @@ node('node') {
     try {
 
         stage('Checkout') {
-
-            checkout scm
+            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'wkm23@github', url: 'https://github.com/KyleAWang/web-workeffort.git']]])
         }
 
         stage('Test') {

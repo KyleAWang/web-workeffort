@@ -46,7 +46,8 @@ class App extends React.Component {
             <Drawer open={drawerToggle} containerClassName="drwaer_div">
               <MenuItem
                 containerElement={<Link to="/workeffort"/>} onTouchTap={() => onChangeDrawerToggle(false)}>Find Work Efforts</MenuItem>
-              <MenuItem>Menu Item 2</MenuItem>
+              <MenuItem
+                containerElement={<Link to="/calendar"/>} onTouchTap={() => onChangeDrawerToggle(false)}>Calendar</MenuItem>
             </Drawer>
           </div>
         </div>

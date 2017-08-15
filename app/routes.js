@@ -82,6 +82,27 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       }
 
+    },{
+      path: '/calendar',
+      name: 'calendar',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          // import('containers/CalendarPage/reducer'),
+          // import('containers/CalendarPage/sagas'),
+          import('containers/CalendarPage')
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([component]) => {
+          // injectReducer('user', reducer.default);
+          // injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      }
+
     }, {
       path: '*',
       name: 'notfound',
