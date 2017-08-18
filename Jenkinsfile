@@ -12,24 +12,24 @@ node('node') {
             checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'wkm23@github', url: 'https://github.com/KyleAWang/web-workeffort.git']]])
         }
 
-        stage('Test') {
+        stage('Build Docker') {
 
-            env.NODE_ENV = "test"
-
-            print "Environment will be : ${env.NODE_ENV}"
-
-            sh 'node -v'
-            sh 'npm prune'
-            sh 'npm install'
-            sh 'npm test'
-
+            sh './dockerBuild.sh'
         }
 
-//        stage('Build Docker') {
+//        stage('Test') {
 //
-//            sh './dockerBuild.sh'
+//            env.NODE_ENV = "test"
+//
+//            print "Environment will be : ${env.NODE_ENV}"
+//
+//            sh 'node -v'
+//            sh 'npm prune'
+//            sh 'npm install'
+//            sh 'npm test'
+//
 //        }
-//
+
 //        stage('Deploy') {
 //
 //            echo 'Push to Repo'
@@ -39,7 +39,7 @@ node('node') {
 //            sh 'ssh deploy@xxxxx.xxxxx.com running/xxxxxxx/dockerRun.sh'
 //
 //        }
-//
+
 //        stage('Cleanup') {
 //
 //            echo 'prune and cleanup'
