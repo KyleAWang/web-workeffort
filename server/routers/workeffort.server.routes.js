@@ -4,13 +4,12 @@ import {
   deleteWorkEffort,
   getWorkEffort,
   listWorkEffort,
-  updateWorkEffort
+  updateWorkEffort,
 } from '../controllers/workefforts.server.controller';
 import { userLogin } from '../controllers/user.server.controller';
 
 export default (app) => {
-
-  let v0 = express.Router();
+  const v0 = express.Router();
 
   v0.route('/api/workefforts/')
     .post(listWorkEffort);
@@ -25,6 +24,4 @@ export default (app) => {
 
   app.use('/v0', v0);
   app.use('/', v0);
-
-
-}
+};

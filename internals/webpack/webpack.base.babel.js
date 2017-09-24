@@ -63,6 +63,9 @@ module.exports = (options) => ({
       test: /\.json$/,
       loader: 'json-loader',
     }, {
+      test: [/\.jsx$/],
+      loaders: ['jsx-loader?insertPragma=React.DOM&harmony'],
+    }, {
       test: /\.(mp4|webm)$/,
       loader: 'url-loader',
       query: {
@@ -71,6 +74,7 @@ module.exports = (options) => ({
     }],
   },
   plugins: options.plugins.concat([
+    // new webpack.IgnorePlugin(/\.\/locale$/),
     new webpack.ProvidePlugin({
       // make fetch available
       fetch: 'exports-loader?self.fetch!whatwg-fetch',
@@ -86,7 +90,6 @@ module.exports = (options) => ({
     }),
     new webpack.NamedModulesPlugin(),
     extractSass,
-    new webpack.IgnorePlugin(/\.\/locale$/),
   ]),
   resolve: {
     modules: ['app', 'node_modules'],
@@ -99,7 +102,7 @@ module.exports = (options) => ({
       'browser',
       'jsnext:main',
       'main',
-    ]
+    ],
   },
   devtool: options.devtool,
   target: 'web', // Make web variables accessible to webpack, e.g. window

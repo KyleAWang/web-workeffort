@@ -1,14 +1,14 @@
-let defaultEnvConfig = require('./default');
-let argv = require('minimist')(process.argv.slice(2));
+const defaultEnvConfig = require('./default');
+const argv = require('minimist')(process.argv.slice(2));
 
 module.exports = {
   db: {
-    uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (argv.dbhost || 'localhost') + ':27017/workeffort-web',
+    uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || `mongodb://${argv.dbhost || 'localhost'}:27017/workeffort-web`,
     options: {
       user: '',
-      pass: ''
+      pass: '',
     },
     // Enable mongoose debug mode
-    debug: process.env.MONGODB_DEBUG || false
-  }
-}
+    debug: process.env.MONGODB_DEBUG || false,
+  },
+};

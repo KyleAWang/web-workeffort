@@ -1,12 +1,12 @@
 
-'use strict';
+
 const argv = require('minimist')(process.argv.slice(2));
 
 module.exports = {
   app: {
     title: 'Home Application',
     description: 'My personal daily application',
-    keywords: 'daily life'
+    keywords: 'daily life',
   },
   host: argv.host || process.env.HOST || null,
   prettyHost: argv.host || process.env.HOST || 'localhost',
@@ -22,7 +22,7 @@ module.exports = {
     // secure cookie should be turned to true to provide additional
     // layer of security so that the cookie is set only when working
     // in HTTPS mode.
-    secure: false
+    secure: false,
   },
   // sessionSecret should be changed for security measures and concerns
   sessionSecret: process.env.SESSION_SECRET || 'Kyle workshop',
@@ -36,7 +36,7 @@ module.exports = {
     // csp: { /* Content Security Policy object */},
     xframe: 'SAMEORIGIN',
     p3p: 'ABCDEF',
-    xssProtection: true
+    xssProtection: true,
   },
   favicon: 'modules/core/client/img/brand/favicon.ico',
 };

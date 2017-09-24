@@ -11,7 +11,7 @@ const loadModule = (cb) => (componentModule) => {
 
 export default function createRoutes(store) {
   // create reusable async injectors using getAsyncInjectors factory
-  const {injectReducer, injectSagas} = getAsyncInjectors(store);
+  const { injectReducer, injectSagas } = getAsyncInjectors(store);
 
   return [
     {
@@ -19,7 +19,7 @@ export default function createRoutes(store) {
       name: 'home',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('components/TempHomePage')
+          import('components/TempHomePage'),
         ]);
 
         const renderRoute = loadModule(cb);
@@ -37,7 +37,7 @@ export default function createRoutes(store) {
         const importModules = Promise.all([
           import('containers/WorkEffortPage/reducer'),
           import('containers/WorkEffortPage/sagas'),
-          import('containers/WorkEffortPage')
+          import('containers/WorkEffortPage'),
         ]);
 
         const renderRoute = loadModule(cb);
@@ -56,19 +56,19 @@ export default function createRoutes(store) {
         if (!window.sessionStorage.getItem('jwtToken')) {
           replace({
             pathname: '/login',
-            state: { nextState: nextState.location.pathname }
-          })
+            state: { nextState: nextState.location.pathname },
+          });
         }
-      }
+      },
 
-    },{
+    }, {
       path: '/login',
       name: 'login',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           import('containers/UserLogin/reducer'),
           import('containers/UserLogin/sagas'),
-          import('containers/UserLogin')
+          import('containers/UserLogin'),
         ]);
 
         const renderRoute = loadModule(cb);
@@ -80,16 +80,16 @@ export default function createRoutes(store) {
         });
 
         importModules.catch(errorLoading);
-      }
+      },
 
-    },{
+    }, {
       path: '/calendar',
       name: 'calendar',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           // import('containers/CalendarPage/reducer'),
           // import('containers/CalendarPage/sagas'),
-          import('containers/CalendarPage')
+          import('containers/CalendarPage'),
         ]);
 
         const renderRoute = loadModule(cb);
@@ -101,7 +101,7 @@ export default function createRoutes(store) {
         });
 
         importModules.catch(errorLoading);
-      }
+      },
 
     }, {
       path: '*',

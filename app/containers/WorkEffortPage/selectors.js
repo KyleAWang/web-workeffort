@@ -22,10 +22,16 @@ const makeSelectError = () => createSelector(
   (workEffortState) => workEffortState.get('error')
 );
 
+const makeSelectDiagramDialogOpen = () => createSelector(
+  selectWorkEffort,
+  (workEffortState) => workEffortState.get('diagramDialogOpen')
+);
+
 export {
   selectWorkEffort,
   makeSelectSearchOptions,
   makeSelectSearchWorkEfforts,
   makeSelectError,
-  makeSelectLoading
+  makeSelectLoading,
+  makeSelectDiagramDialogOpen,
 };

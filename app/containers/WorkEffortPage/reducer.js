@@ -4,14 +4,16 @@ import {
   SEARCH_WORKEFFORTS,
   SEARCH_WORKEFFORTS_SUCCESS,
   SEARCH_WORKEFFORTS_ERROR,
-  CHANGE_SEARCH_OPTIONS
-} from './constants'
+  CHANGE_SEARCH_OPTIONS,
+  DIAGRAM_DIALOG_TOGGLE,
+} from './constants';
 
 const initialState = fromJS({
   loading: false,
   error: false,
   workEfforts: false,
-  searchOptions: {}
+  searchOptions: {},
+  diagramDialogOpen: false,
 });
 
 function workEffortReducer(state = initialState, action) {
@@ -25,10 +27,6 @@ function workEffortReducer(state = initialState, action) {
         .set('loading', false)
         .set('error', false)
         .set('searchOptions', action.searchOptions);
-    case SEARCH_WORKEFFORTS:
-      return state
-        .set('loading', true)
-        .set('error', false);
     case SEARCH_WORKEFFORTS_SUCCESS:
       return state
         .set('loading', false)
@@ -38,6 +36,9 @@ function workEffortReducer(state = initialState, action) {
       return state
         .set('loading', false)
         .set('error', action.error);
+    case DIAGRAM_DIALOG_TOGGLE:
+      return state
+        .set('diagramDialogOpen', action.diagramDialogOpen);
     default:
       return state;
   }

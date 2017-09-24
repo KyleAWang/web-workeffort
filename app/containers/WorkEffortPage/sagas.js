@@ -24,17 +24,16 @@ export function* searchWorkefforts() {
   const options = {
     method: 'POST',
     headers: {
-      'Accept': 'application/json',
+      Accept: 'application/json',
       'Content-Type': 'application/json',
-      'x-access-token': jwtToken
+      'x-access-token': jwtToken,
     },
-    body: JSON.stringify(searchOptions)
+    body: JSON.stringify(searchOptions),
   };
-
-  console.log(options);
 
   try {
     const response = yield call(request, requestURL, options);
+    console.log(response);
 
     yield put(searchWorkEffortsSuccess(response));
   } catch (err) {
@@ -55,4 +54,4 @@ export function* searchWorkeffortsData() {
 
 export default [
   searchWorkeffortsData,
-]
+];

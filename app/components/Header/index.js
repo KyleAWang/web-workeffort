@@ -7,7 +7,7 @@ import { Link } from 'react-router';
 import './styles/index.scss';
 
 function Header(props) { // eslint-disable-line react/prefer-stateless-function
-  const styles = { example: { position: "fixed", top: 0, }, };
+  const styles = { example: { position: 'fixed', top: 0 } };
   return (
     <div>
       <AppBar
@@ -17,9 +17,10 @@ function Header(props) { // eslint-disable-line react/prefer-stateless-function
       >
       </AppBar>
       <div>
-        <Drawer open={true} containerClassName="drwaer_div">
+        <Drawer open containerClassName="drwaer_div">
           <MenuItem
-            containerElement={<Link to="/workeffort" />}>Find Work Efforts</MenuItem>
+            containerElement={<Link to="/workeffort" />}
+          >Find Work Efforts</MenuItem>
           <MenuItem>Menu Item 2</MenuItem>
         </Drawer>
       </div>

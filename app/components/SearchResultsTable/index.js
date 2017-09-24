@@ -42,14 +42,14 @@ function SearchResultsTable(props) {
         {tableRow}
       </TableBody>
     </Table>
-  )
+  );
 }
 
 SearchResultsTable.PropTypes = {
   resultList: PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.array
-  ])
+    PropTypes.array,
+  ]),
 };
 
 export default SearchResultsTable;

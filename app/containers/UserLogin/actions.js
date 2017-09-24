@@ -4,47 +4,47 @@ import {
   USER_LOGIN_ERROR,
   USER_LOGIN_USERNAME_CHANGE,
   USER_LOGIN_PASSWORD_CHANGE,
-  USER_LOGIN_FORM_ERRORS
+  USER_LOGIN_FORM_ERRORS,
 } from './constants';
 
 
 export function userLogin() {
   return {
-    type: USER_LOGIN
-  }
+    type: USER_LOGIN,
+  };
 }
 
 export function userLoginSuccess(user) {
   return {
     type: USER_LOGIN_SUCCESS,
-    user
-  }
+    user,
+  };
 }
 
 export function userLoginError(error) {
   return {
     type: USER_LOGIN_ERROR,
-    error
-  }
+    error,
+  };
 }
 
 export function changeUserName(userName) {
   return {
     type: USER_LOGIN_USERNAME_CHANGE,
-    userName
-  }
+    userName,
+  };
 }
 
 export function changePassword(password) {
-   return {
-     type: USER_LOGIN_PASSWORD_CHANGE,
-     password
-   }
+  return {
+    type: USER_LOGIN_PASSWORD_CHANGE,
+    password,
+  };
 }
 
 export function onFormErrors(formErrors) {
   return {
     type: USER_LOGIN_FORM_ERRORS,
-    formErrors
-  }
+    formErrors,
+  };
 }

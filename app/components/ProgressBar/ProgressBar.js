@@ -9,7 +9,6 @@ import Wrapper from './Wrapper';
 import Percent from './Percent';
 
 class ProgressBar extends React.Component {
-
   static defaultProps = {
     percent: -1,
     autoIncrement: true,

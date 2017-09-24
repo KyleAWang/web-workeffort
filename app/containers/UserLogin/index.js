@@ -10,17 +10,16 @@ import {
   makeSelectLoading,
   makeSelectUserName,
   makeSelectPassord,
-  makeSelectFormErrors
+  makeSelectFormErrors,
 } from './selectors';
 import {
   changePassword,
   changeUserName,
   userLogin,
-  onFormErrors
+  onFormErrors,
 } from './actions';
 
 class UserLogin extends React.Component {
-
   constructor(props) {
     super(props);
     this.onClickSubmit = this.onClickSubmit.bind(this);
@@ -28,7 +27,7 @@ class UserLogin extends React.Component {
   }
 
   onClickSubmit(evt) {
-    const {userName, password, formErrors, onUpdateFormErrors, onSubmitForm} = this.props;
+    const { userName, password, formErrors, onUpdateFormErrors, onSubmitForm } = this.props;
 
     if (evt !== undefined && evt.preventDefault) {
       evt.preventDefault();
@@ -39,15 +38,15 @@ class UserLogin extends React.Component {
     if (!userName) {
       newFormErrors = {
         ...formErrors,
-        userName: 'User Name is required'
-      }
+        userName: 'User Name is required',
+      };
     }
 
     if (!password) {
       newFormErrors = {
         ...newFormErrors,
-        password: 'Password is required'
-      }
+        password: 'Password is required',
+      };
     }
 
     if (newFormErrors) {
@@ -58,22 +57,22 @@ class UserLogin extends React.Component {
   }
 
   validateFormFields() {
-    const {userName, password, formErrors, onUpdateFormErrors } = this.props;
+    const { userName, password, formErrors, onUpdateFormErrors } = this.props;
 
     let newFormErrors;
 
     if (!userName) {
       newFormErrors = {
         ...formErrors,
-        userName: 'User Name is required'
-      }
+        userName: 'User Name is required',
+      };
     }
 
     if (!password) {
       newFormErrors = {
         ...newFormErrors,
-        password: 'Password is required'
-      }
+        password: 'Password is required',
+      };
     }
 
     if (newFormErrors) {
@@ -82,21 +81,30 @@ class UserLogin extends React.Component {
   }
 
   render() {
-    const {userName, password, formErrors} = this.props;
+    const { userName, password, formErrors } = this.props;
     console.log(formErrors);
 
     return (
       <div>
         <form onSubmit={this.onClickSubmit}>
           <div>
-            <TextField hintText="Username" value={userName || ''} onChange={this.props.onChangeUserName}
-                       errorText={formErrors.userName}/>
+            <TextField
+              hintText="Username"
+              value={userName || ''}
+              onChange={this.props.onChangeUserName}
+              errorText={formErrors.userName}
+            />
           </div>
-          <br/>
-          <TextField hintText="Password" type="password" value={password || ''} onChange={this.props.onChangePassword}
-                     errorText={formErrors.password}/>
-          <br/>
-          <RaisedButton label="Login" primary={true} type="submit"/>
+          <br />
+          <TextField
+            hintText="Password"
+            type="password"
+            value={password || ''}
+            onChange={this.props.onChangePassword}
+            errorText={formErrors.password}
+          />
+          <br />
+          <RaisedButton label="Login" primary type="submit" />
         </form>
       </div>
     );
@@ -107,16 +115,17 @@ UserLogin.PropTypes = {
   loading: PropTypes.bool,
   error: PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.object
+    PropTypes.object,
   ]),
   userName: PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.string
+    PropTypes.string,
   ]),
   password: PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.string
-  ])
+    PropTypes.string,
+  ]),
+  onChangeUserName: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -124,15 +133,15 @@ const mapStateToProps = createStructuredSelector({
   error: makeSelectError(),
   userName: makeSelectUserName(),
   password: makeSelectPassord(),
-  formErrors: makeSelectFormErrors()
+  formErrors: makeSelectFormErrors(),
 });
 
 export function mapDispatchToProps(dispatch) {
   return {
-    onChangeUserName: (evt) => {dispatch(changeUserName(evt.target.value))},
+    onChangeUserName: (evt) => { dispatch(changeUserName(evt.target.value)); },
     onChangePassword: (evt) => dispatch(changePassword(evt.target.value)),
     onUpdateFormErrors: (formErrors) => dispatch(onFormErrors(formErrors)),
-    onSubmitForm: (evt) => dispatch(userLogin())
-  }
+    onSubmitForm: (evt) => dispatch(userLogin()),
+  };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(UserLogin);

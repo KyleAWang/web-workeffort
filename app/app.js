@@ -1,26 +1,26 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
-import {applyRouterMiddleware, Router, browserHistory} from 'react-router';
-import {syncHistoryWithStore} from 'react-router-redux';
+import { Provider } from 'react-redux';
+import { applyRouterMiddleware, Router, browserHistory } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
 import FontFaceObserver from 'fontfaceobserver';
 import 'sanitize.css/sanitize.css';
-import {useScroll} from 'react-router-scroll';
+import { useScroll } from 'react-router-scroll';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
-import App from './containers/App';
-import {makeSelectLocationState} from 'containers/App/selectors';
+import { makeSelectLocationState } from 'containers/App/selectors';
 
 import '!file-loader?name=[name].[ext]!./manifest.json';
 
 import configureStore from './store';
 
+import App from './containers/App';
+
 import './global-styles';
 
 import createRoutes from './routes';
+injectTapEventPlugin();
 
 const openSansObserver = new FontFaceObserver('Roboto', {});
 
@@ -58,13 +58,13 @@ const render = () => {
         />
       </MuiThemeProvider>
     </Provider>
-  ,
-  document.getElementById('app')
+    ,
+    document.getElementById('app')
   );
-  };
+};
 
-  render();
+render();
 
-  if (process.env.NODE_ENV === 'production') {
-    require('offline-plugin/runtime').install(); // eslint-disable-line global-require
-  }
+if (process.env.NODE_ENV === 'production') {
+  require('offline-plugin/runtime').install(); // eslint-disable-line global-require
+}

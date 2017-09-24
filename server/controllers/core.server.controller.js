@@ -1,4 +1,4 @@
-'use strict';
+
 
 exports.renderNotFound = function (req, res) {
   res.status(404).format({
@@ -7,11 +7,11 @@ exports.renderNotFound = function (req, res) {
     },
     'application/json': function () {
       res.json({
-        error: 'Path not found'
+        error: 'Path not found',
       });
     },
-    'default': function () {
+    default() {
       res.send('Path not found');
-    }
+    },
   });
 };

@@ -24,14 +24,14 @@ import { makeSelectDrawerToggle } from './selectors';
 class App extends React.Component {
   render() {
     const { drawerToggle, onChangeDrawerToggle } = this.props;
-    const styles = { example: { position: "fixed", top: 0, }, };
+    const styles = { example: { position: 'fixed', top: 0 } };
 
     return (
       <div>
         <Helmet
           defaultTitle="Work Effort Management"
           meta={[
-            {name: 'description', content: 'Work Effort Management application'},
+            { name: 'description', content: 'Work Effort Management application' },
           ]}
         />
         <div>
@@ -45,9 +45,13 @@ class App extends React.Component {
           <div>
             <Drawer open={drawerToggle} containerClassName="drwaer_div">
               <MenuItem
-                containerElement={<Link to="/workeffort"/>} onTouchTap={() => onChangeDrawerToggle(false)}>Find Work Efforts</MenuItem>
+                containerElement={<Link to="/workeffort" />}
+                onTouchTap={() => onChangeDrawerToggle(false)}
+              >Find Work Efforts</MenuItem>
               <MenuItem
-                containerElement={<Link to="/calendar"/>} onTouchTap={() => onChangeDrawerToggle(false)}>Calendar</MenuItem>
+                containerElement={<Link to="/calendar" />}
+                onTouchTap={() => onChangeDrawerToggle(false)}
+              >Calendar</MenuItem>
             </Drawer>
           </div>
         </div>
@@ -56,7 +60,6 @@ class App extends React.Component {
         </div>
       </div>
     );
-
   }
 }
 
@@ -65,7 +68,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  drawerToggle: makeSelectDrawerToggle()
+  drawerToggle: makeSelectDrawerToggle(),
 });
 
 export function mapDispatchToProps(dispatch) {
@@ -73,8 +76,8 @@ export function mapDispatchToProps(dispatch) {
     onChangeDrawerToggle: (val) => {
       console.log(val);
       dispatch(toggleDrawer(val));
-    }
-  }
+    },
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

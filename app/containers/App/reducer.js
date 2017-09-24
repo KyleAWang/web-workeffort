@@ -3,7 +3,7 @@ import { fromJS } from 'immutable';
 import { DRAWER_TOGGLE } from './constants';
 
 const initialState = fromJS({
-  drawerToggle: false
+  drawerToggle: false,
 });
 
 function appReducer(state = initialState, action) {

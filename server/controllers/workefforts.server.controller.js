@@ -6,14 +6,16 @@ import jwt from 'jsonwebtoken';
 import errorHandler from './errors.server.controller';
 
 
-let service_protocol, service_host, service_port, privateKey;
+let serviceProtocol,
+  serviceHost,
+  servicePort,
+  privateKey;
 
-properties.parse(path.resolve('server/config/properties/dev.properties'), {path: true, sections: true}, (err, data) => {
-  if (err)
-    return console.error(err);
-  service_protocol = data.workEffort_service.protocol || '';
-  service_host = data.workEffort_service.host || '';
-  service_port = data.workEffort_service.port || '';
+properties.parse(path.resolve('server/config/properties/dev.properties'), { path: true, sections: true }, (err, data) => {
+  if (err) { return console.error(err); }
+  serviceProtocol = data.workEffort_service.protocol || '';
+  serviceHost = data.workEffort_service.host || '';
+  servicePort = data.workEffort_service.port || '';
   privateKey = data.auth.privateKey;
 });
 
@@ -24,7 +26,7 @@ export function listWorkEffort(req, res) {
     console.log('list', err);
     if (err) {
       res.status(403).send({
-        message: 'User is not authorized'
+        message: 'User is not authorized',
       });
     } else {
       const parmas = {};
@@ -44,25 +46,24 @@ export function listWorkEffort(req, res) {
         parmas.body.currentStatusId = req.body.currentStatusId;
       }
       axios({
-        url: service_protocol + '://' + service_host + ':' + service_port + '/getworkefforts',
+        url: `${serviceProtocol}://${serviceHost}:${servicePort}/getworkefforts`,
         method: 'post',
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
         },
-        data: parmas
+        data: parmas,
       })
         .then((response) => {
           res.send(response.data);
         })
         .catch((err) => {
           res.status(500).send({
-            message: errorHandler.getErrorMessage(err)
+            message: errorHandler.getErrorMessage(err),
           });
         });
     }
   });
-
 }
 
 export function createWorkEffort(req, res) {

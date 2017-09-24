@@ -10,5 +10,5 @@ export default function WEDrawer() {
         <MenuItem>Menu Item 2</MenuItem>
       </Drawer>
     </div>
-  )
+  );
 }

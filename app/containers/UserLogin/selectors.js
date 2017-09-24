@@ -39,5 +39,5 @@ export {
   makeSelectUser,
   makeSelectUserName,
   makeSelectPassord,
-  makeSelectFormErrors
-}
+  makeSelectFormErrors,
+};

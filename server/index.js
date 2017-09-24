@@ -24,26 +24,22 @@ const resolve = require('path').resolve;
 import workEffortRoutes from './routers/workeffort.server.routes';
 
 
-
-if (cluster.isMaster){
-  for(let i = 0; i < 1; i++){
+if (cluster.isMaster) {
+  for (let i = 0; i < 1; i++) {
     cluster.fork();
   }
 
-  cluster.on('exit', function (worker, code, signal) {
+  cluster.on('exit', (worker, code, signal) => {
     console.log('Worker %d died with code/signal %s. Restarting worker...', worker.process.pid, signal || code);
     cluster.fork();
   });
-
-}else{
-
+} else {
   mongoose.connect((db) => {
-
     const app = express();
 
-// Request body parsing middleware should be above methodOverride
+    // Request body parsing middleware should be above methodOverride
     app.use(bodyParser.urlencoded({
-      extended: true
+      extended: true,
     }));
     app.use(bodyParser.json());
     app.use(methodOverride());
@@ -62,8 +58,8 @@ if (cluster.isMaster){
       store: new MongoStore({
         mongooseConnection: db.connection,
         collection: config.sessionCollection,
-        auto_reconnect: true
-      })
+        auto_reconnect: true,
+      }),
     }));
 
     app.use(flash());
@@ -73,14 +69,14 @@ if (cluster.isMaster){
     app.route('/:url(api)/*').get(core.renderNotFound);
 
 
-// In production we need to pass these values in instead of relying on webpack
+    // In production we need to pass these values in instead of relying on webpack
     setup(app, {
       outputPath: resolve(process.cwd(), 'build'),
       publicPath: '/',
     });
 
 
-// Start your app.
+    // Start your app.
     app.listen(config.port, config.host, (err) => {
       if (err) {
         return logger.error(err.message);
@@ -101,10 +97,9 @@ if (cluster.isMaster){
     });
   });
 
-  process.on('uncaughtException', function (err) {
-    console.error((new Date).toUTCString() + ' uncaughtException:', err.message);
+  process.on('uncaughtException', (err) => {
+    console.error(`${(new Date()).toUTCString()} uncaughtException:`, err.message);
     console.error(err.stack);
     process.exit(1);
-  })
-
+  });
 }

@@ -26,5 +26,5 @@ const makeSelectDrawerToggle = () => createSelector(
 export {
   selectGlobal,
   makeSelectLocationState,
-  makeSelectDrawerToggle
-}
+  makeSelectDrawerToggle,
+};

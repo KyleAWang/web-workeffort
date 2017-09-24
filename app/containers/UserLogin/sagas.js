@@ -5,14 +5,14 @@ import { browserHistory } from 'react-router';
 
 import {
   makeSelectUserName,
-  makeSelectPassord
+  makeSelectPassord,
 } from './selectors';
 import {
   userLoginSuccess,
-  userLoginError
+  userLoginError,
 } from './actions';
 import {
-  USER_LOGIN
+  USER_LOGIN,
 } from './constants';
 
 export function* userLogin() {
@@ -23,10 +23,10 @@ export function* userLogin() {
   const options = {
     method: 'POST',
     headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify({username: userName, password: password})
+    body: JSON.stringify({ username: userName, password }),
   };
 
   try {
@@ -50,4 +50,4 @@ export function* userLoginData() {
 
 export default [
   userLoginData,
-]
+];

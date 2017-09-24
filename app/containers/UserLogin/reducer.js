@@ -1,4 +1,4 @@
-import {fromJS} from 'immutable';
+import { fromJS } from 'immutable';
 
 import {
   USER_LOGIN_ERROR,
@@ -6,7 +6,7 @@ import {
   USER_LOGIN,
   USER_LOGIN_PASSWORD_CHANGE,
   USER_LOGIN_USERNAME_CHANGE,
-  USER_LOGIN_FORM_ERRORS
+  USER_LOGIN_FORM_ERRORS,
 } from './constants';
 
 const initialState = fromJS({
@@ -15,7 +15,7 @@ const initialState = fromJS({
   userName: false,
   password: false,
   formErrors: false,
-  user: false
+  user: false,
 });
 
 function userLoginReducer(state = initialState, action) {
