@@ -141,7 +141,7 @@ export function mapDispatchToProps(dispatch) {
     onChangeUserName: (evt) => { dispatch(changeUserName(evt.target.value)); },
     onChangePassword: (evt) => dispatch(changePassword(evt.target.value)),
     onUpdateFormErrors: (formErrors) => dispatch(onFormErrors(formErrors)),
-    onSubmitForm: (evt) => dispatch(userLogin()),
+    onSubmitForm: () => dispatch(userLogin()),
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(UserLogin);
