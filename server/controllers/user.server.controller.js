@@ -5,16 +5,16 @@ import jwt from 'jsonwebtoken';
 
 import errorHandler from './errors.server.controller';
 
-let service_protocol,
-  service_host,
-  service_port,
+let serviceProtocol,
+  serviceHost,
+  servicePort,
   privateKey;
 
 properties.parse(path.resolve('server/config/properties/dev.properties'), { path: true, sections: true }, (err, data) => {
   if (err) { return console.error(err); }
-  service_protocol = data.user_service.protocol || '';
-  service_host = data.user_service.host || '';
-  service_port = data.user_service.port || '';
+  serviceProtocol = data.user_service.protocol || '';
+  serviceHost = data.user_service.host || '';
+  servicePort = data.user_service.port || '';
   privateKey = data.auth.privateKey;
 });
 
@@ -25,7 +25,7 @@ export function userLogin(req, res) {
     password: req.body.password,
   };
 
-  axios.post(`${service_protocol}://${service_host}:${service_port}/user-login`, {
+  axios.post(`${serviceProtocol}://${serviceHost}:${servicePort}/user-login`, {
     username: req.body.username,
     password: req.body.password,
   })
@@ -41,4 +41,16 @@ export function userLogin(req, res) {
         message: errorHandler.getErrorMessage(err),
       });
     });
+}
+
+export function isAuthenticated(req, res, next) {
+  const jwtToken = req.body.token || req.headers['x-access-token'];
+  jwt.verify(jwtToken, privateKey, (err) => {
+    if (err) {
+      return res.status(403).send({
+        message: 'User is not authorized',
+      });
+    }
+    return next();
+  });
 }

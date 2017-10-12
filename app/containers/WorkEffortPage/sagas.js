@@ -35,7 +35,7 @@ export function* searchWorkefforts() {
     const response = yield call(request, requestURL, options);
     console.log(response);
 
-    yield put(searchWorkEffortsSuccess(response));
+    yield put(searchWorkEffortsSuccess(response.workEfforts));
   } catch (err) {
     if (err.response.status === 403) {
       logout();

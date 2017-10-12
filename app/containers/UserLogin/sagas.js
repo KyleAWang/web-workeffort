@@ -16,7 +16,7 @@ import {
 } from './constants';
 
 export function* userLogin() {
-  const requestURL = '/api/signin/';
+  const requestURL = '/signin/';
   const userName = yield select(makeSelectUserName());
   const password = yield select(makeSelectPassord());
 
